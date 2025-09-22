@@ -14,5 +14,5 @@ export async function GET(req: Request) {
     `Qual é o passo a passo da jornada de um consorciado? A jornada começa com a simulação e adesão a um grupo de consórcio, sem necessidade de análise de crédito inicial. Mensalmente, você paga a parcela para participar das assembleias, onde concorrerá à contemplação por sorteio. Se desejar, pode ofertar um lance para tentar antecipar o recebimento da carta de crédito. Uma vez contemplado, você passará por uma análise de crédito para confirmar sua capacidade de pagamento. Com o crédito aprovado, a carta é liberada para você comprar o bem à vista, negociando o melhor preço. Após a compra, você continua pagando as parcelas restantes até o encerramento do seu plano e a quitação total da cota.`,
   ];
 
-  return new Response(data.join("\n"));
+  return new Response(data.join("\n ### \n"));
 }
