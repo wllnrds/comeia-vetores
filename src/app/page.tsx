@@ -19,7 +19,7 @@ const data: IGroup[] = [
     items: [
       {
         title: "Guia consórcio",
-        href: "/consorcio",
+        href: "/vetores/consorcio",
       },
     ],
   },
@@ -28,7 +28,7 @@ const data: IGroup[] = [
     items: [
       {
         title: "Ofertas renegociação",
-        href: "/cobranca/oferta",
+        href: "/api/mock/cobranca/oferta",
       },
     ],
   },
@@ -39,26 +39,26 @@ const data: IGroup[] = [
       {
         title: "Card Carousel Compact",
         cover:
-          "/card?mode=compact&headline=FINAL%204045&title=Cart%C3%A3o%20de%20Cr%C3%A9dito%20Visa&subtitle=vencimento%2010/25&value=R$%20100,00&tagName=em%20dia",
-        href: "/card?mode=compact&headline=FINAL%204045&title=Cart%C3%A3o%20de%20Cr%C3%A9dito%20Visa&subtitle=vencimento%2010/25&value=R$%20100,00&tagName=em%20dia",
+          "/card/contrato?mode=compact&headline=FINAL%204045&title=Cart%C3%A3o%20de%20Cr%C3%A9dito%20Visa&subtitle=vencimento%2010/25&value=R$%20100,00&tagName=em%20dia",
+        href: "/card/contrato?mode=compact&headline=FINAL%204045&title=Cart%C3%A3o%20de%20Cr%C3%A9dito%20Visa&subtitle=vencimento%2010/25&value=R$%20100,00&tagName=em%20dia",
       },
       {
         title: "Card Carousel Full",
         cover:
-          "/card?mode=full&headline=FINAL%204045&title=Cart%C3%A3o%20de%20Cr%C3%A9dito%20Visa&subtitle=vencimento%2010/25&value=R$%20100,00&tagName=em%20dia",
-        href: "/card?mode=full&headline=FINAL%204045&title=Cart%C3%A3o%20de%20Cr%C3%A9dito%20Visa&subtitle=vencimento%2010/25&value=R$%20100,00&tagName=em%20dia",
+          "/card/contrato?mode=full&headline=FINAL%204045&title=Cart%C3%A3o%20de%20Cr%C3%A9dito%20Visa&subtitle=vencimento%2010/25&value=R$%20100,00&tagName=em%20dia",
+        href: "/card/contrato?mode=full&headline=FINAL%204045&title=Cart%C3%A3o%20de%20Cr%C3%A9dito%20Visa&subtitle=vencimento%2010/25&value=R$%20100,00&tagName=em%20dia",
       },
       {
         title: "Progress Card %",
         cover:
-          "/progress?title=Progresso&current=50&total=100&label=50%25%20contemplado&colorBackground=%23F0F0F0&colorProgress=linear-gradient%28201deg%2Crgba%28174%2C%20227%2C%20238%2C%201%29%200%25%2C%20rgba%28148%2C%20162%2C%20233%2C%201%29%20100%25%29&colorText=%234F46E5",
-        href: "/progress?title=Progresso&current=50&total=100&label=50%25%20contemplado&colorBackground=%23F0F0F0&colorProgress=linear-gradient%28201deg%2Crgba%28174%2C%20227%2C%20238%2C%201%29%200%25%2C%20rgba%28148%2C%20162%2C%20233%2C%201%29%20100%25%29&colorText=%234F46E5",
+          "/card/progresso?title=Progresso&current=50&total=100&label=50%25%20contemplado&colorBackground=%23F0F0F0&colorProgress=linear-gradient%28201deg%2Crgba%28174%2C%20227%2C%20238%2C%201%29%200%25%2C%20rgba%28148%2C%20162%2C%20233%2C%201%29%20100%25%29&colorText=%234F46E5",
+        href: "/card/progresso?title=Progresso&current=50&total=100&label=50%25%20contemplado&colorBackground=%23F0F0F0&colorProgress=linear-gradient%28201deg%2Crgba%28174%2C%20227%2C%20238%2C%201%29%200%25%2C%20rgba%28148%2C%20162%2C%20233%2C%201%29%20100%25%29&colorText=%234F46E5",
       },
       {
         title: "Progress Card unidade",
         cover:
-          "/progress?title=Progresso&current=10&total=12&label=1%20de%2012&colorBackground=%23F0F0F0&colorProgress=linear-gradient%28201deg%2Crgba%28174%2C%20227%2C%20238%2C%201%29%200%25%2C%20rgba%28148%2C%20162%2C%20233%2C%201%29%20100%25%29&colorText=%234F46E5",
-        href: "/progress?title=Progresso&current=10&total=12&label=1%20de%2012&colorBackground=%23F0F0F0&colorProgress=linear-gradient%28201deg%2Crgba%28174%2C%20227%2C%20238%2C%201%29%200%25%2C%20rgba%28148%2C%20162%2C%20233%2C%201%29%20100%25%29&colorText=%234F46E5",
+          "/card/progresso?title=Progresso&current=10&total=12&label=1%20de%2012&colorBackground=%23F0F0F0&colorProgress=linear-gradient%28201deg%2Crgba%28174%2C%20227%2C%20238%2C%201%29%200%25%2C%20rgba%28148%2C%20162%2C%20233%2C%201%29%20100%25%29&colorText=%234F46E5",
+        href: "/card/progresso?title=Progresso&current=10&total=12&label=1%20de%2012&colorBackground=%23F0F0F0&colorProgress=linear-gradient%28201deg%2Crgba%28174%2C%20227%2C%20238%2C%201%29%200%25%2C%20rgba%28148%2C%20162%2C%20233%2C%201%29%20100%25%29&colorText=%234F46E5",
       },
     ],
   },
