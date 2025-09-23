@@ -1,5 +1,5 @@
-export async function GET(req: Request) {
-  const data = [
+export async function GET(req: Consorcio) {
+  const data: String[] = [
     `O que é um consórcio e como ele se diferencia de um financiamento? O consórcio é uma modalidade de compra planejada em que um grupo de pessoas se une para formar uma poupança conjunta destinada à aquisição de bens ou serviços. A principal vantagem é a ausência de juros. Em vez de pagar juros a um banco, o participante contribui para um fundo comum. Diferentemente do financiamento, que é um empréstimo com juros para aquisição imediata, o consórcio funciona como uma "poupança programada", resultando em parcelas geralmente mais acessíveis. A Rodobens atua como administradora, gerenciando os recursos do grupo, organizando as assembleias e garantindo a conformidade com as regras do Banco Central do Brasil.`,
     `O consórcio Rodobens é realmente "sem juros"? Quais são todos os custos envolvidos? Sim, é correto afirmar que o consórcio não possui juros. No entanto, existem outros custos. O principal é a Taxa de Administração, um percentual fixo sobre o valor total da carta de crédito, diluído nas parcelas mensais. Este valor remunera a Rodobens pela gestão do grupo. Além dela, pode haver a cobrança de um Fundo de Reserva, que serve como um seguro para cobrir eventuais inadimplências no grupo, garantindo sua saúde financeira. Alguns planos também podem incluir seguros específicos. É fundamental ler o contrato de adesão para verificar todos os custos aplicáveis, pois a Rodobens oferece planos com e sem taxa de adesão e fundo de reserva.",O valor da minha parcela será sempre o mesmo até o final do plano? Não necessariamente. O valor da carta de crédito e, consequentemente, das parcelas, passa por reajustes periódicos baseados em índices de inflação, como o INCC para imóveis ou o IPCA para veículos. O objetivo desses reajustes é preservar o poder de compra da sua carta de crédito ao longo do tempo, garantindo que você consiga adquirir o bem desejado mesmo com o aumento dos preços no mercado. Portanto, embora não existam juros, o valor da parcela mensal pode aumentar durante a vigência do contrato, o que desafia a percepção de um pagamento totalmente fixo e previsível. A simulação inicial é apenas um ponto de partida.`,
     `Como faço para ser contemplado e receber a carta de crédito? A contemplação é o momento em que você adquire o direito de usar a carta de crédito. Existem duas formas principais para isso acontecer: sorteio e lance. No sorteio, realizado mensalmente nas assembleias, todos os participantes com as parcelas em dia têm a mesma chance de serem escolhidos. Os sorteios são baseados nos resultados da Loteria Federal, garantindo a transparência do processo. Este método exige paciência, pois a contemplação pode ocorrer em qualquer mês, do início ao fim do plano. A segunda forma é a oferta de um lance, que funciona como uma estratégia para antecipar a contemplação.`,
@@ -16,3 +16,7 @@ export async function GET(req: Request) {
 
   return new Response(data.join("\n ### \n"));
 }
+
+type Consorcio = {
+  params: { slug: string[] };
+};
