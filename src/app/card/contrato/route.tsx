@@ -13,6 +13,11 @@ type DATA_CARD = {
   };
 };
 
+const CARD_SIZE = {
+  full: { width: 1080, height: 1080 },
+  compact: { width: 1080, height: 608 },
+};
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
@@ -49,7 +54,7 @@ export async function GET(request: NextRequest) {
             display: "flex",
             flexDirection: "column",
             width: "1080px",
-            minHeight: data?.mode === "compact" ? "607.5px" : "1080px",
+            minHeight: data?.mode === "compact" ? "608px" : "1080px",
             padding: "48px",
           }}
         >
@@ -110,9 +115,6 @@ export async function GET(request: NextRequest) {
         </div>
       </div>
     ),
-    {
-      width: 1080,
-      height: 1080,
-    }
+    data.mode == "compact" ? CARD_SIZE[data.mode] : CARD_SIZE["full"]
   );
 }
