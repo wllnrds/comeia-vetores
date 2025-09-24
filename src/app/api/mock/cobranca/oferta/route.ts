@@ -12,6 +12,7 @@ export async function GET() {
           valor: 5000,
           ofertas: [
             {
+              id: "oferta1",
               valorTotal: 5000,
               valorParcela: 500,
               desconto: 0,
@@ -22,6 +23,7 @@ export async function GET() {
               iof: 0,
             },
             {
+              id: "oferta2",
               valorTotal: 4500,
               valorParcela: 4500,
               desconto: 500,
