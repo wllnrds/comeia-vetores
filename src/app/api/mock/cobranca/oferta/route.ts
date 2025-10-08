@@ -102,7 +102,7 @@ export async function GET() {
           juros: 0.02,
         },
         {
-          numueroContrato: "123456790",
+          numeroContrato: "123456790",
           descricao: "Financiamento de Veículo",
           valor: 30000,
           parcelasPagas: 15,
