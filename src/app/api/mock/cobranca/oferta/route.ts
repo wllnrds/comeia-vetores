@@ -12,6 +12,7 @@ export async function GET() {
           valor: 5000,
           ofertas: [
             {
+              id: "oferta1",
               valorTotal: 5000,
               valorParcela: 500,
               desconto: 0,
@@ -22,9 +23,28 @@ export async function GET() {
               iof: 0,
             },
             {
+              id: "oferta2",
               valorTotal: 4500,
               valorParcela: 4500,
               desconto: 500,
+              quantidadeParcelas: 1,
+              quantidadeParcelasTotal: 1,
+              taxaJurosMes: 0.0,
+              taxaJurosAno: 0.0,
+              iof: 0,
+            },
+          ],
+        },
+        {
+          numeroContrato: "123456712",
+          descricao: "Cartão de Crédito",
+          valor: 4000,
+          ofertas: [
+            {
+              id: "oferta3",
+              valorTotal: 4000,
+              valorParcela: 4000,
+              desconto: 0,
               quantidadeParcelas: 1,
               quantidadeParcelasTotal: 1,
               taxaJurosMes: 0.0,
