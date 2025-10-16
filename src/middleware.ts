@@ -2,7 +2,9 @@ import { NextResponse, NextRequest } from "next/server";
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-  const authHeader = request.headers.get("Authorization");
+  const authHeader =
+    request.headers.get("Authorization") ||
+    request.headers.get("authorization");
 
   if (!authHeader || !authHeader.startsWith("Basic")) {
     return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
