@@ -57,13 +57,15 @@ function generateTimeSlots(startDate: string, endDate: string) {
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
+  const today = new Date().setHours(0, 0, 0, 0);
+
   const requestData: IAvailableTimeSlotsRequest = {
     addressId: searchParams.get("addressId") || "",
     workOrderId: searchParams.get("workOrderId") || "",
-    startDate: searchParams.get("startDate") || new Date().toString(),
+    startDate: searchParams.get("startDate") || today.toString(),
     endDate:
       searchParams.get("endDate") ||
-      new Date(Date.now() + 23 * 60 * 60 * 1000).toString(),
+      new Date(today + 23 * 60 * 60 * 1000).toString(),
     associatedDocumentDate: searchParams.get("associatedDocumentDate") || "",
     promiseDate: searchParams.get("promiseDate") || "",
     normativeIndicatorDate: searchParams.get("normativeIndicatorDate") || "",
