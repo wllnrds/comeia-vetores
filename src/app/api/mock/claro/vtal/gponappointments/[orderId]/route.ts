@@ -24,7 +24,7 @@ type IScheduleAppointmentResponse = {
 };
 
 // Altera um agendamento
-export async function PATCH(request: NextRequest) {
+export async function PUT(request: NextRequest) {
   const req: IScheduleAppointmentRequest = await request.json();
 
   const response: IScheduleAppointmentResponse = {
