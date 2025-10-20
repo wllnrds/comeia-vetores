@@ -25,8 +25,6 @@ type IScheduleAppointmentResponse = {
 
 // Cria um agendamento
 export async function POST(request: NextRequest) {
-  const req: IScheduleAppointmentRequest = await request.json();
-
   const response: IScheduleAppointmentResponse = {
     apiVersion: "1;2022-02-08",
     transactionId: "593f33f6-6122-4624-8c1c-6602a14a730e",

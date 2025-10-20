@@ -18,8 +18,6 @@ type IConfirmAppointmentResponse = {
 
 // Confirma um agendamento
 export async function POST(request: NextRequest) {
-  const req: IConfirmAppointmentRequest = await request.json();
-
   const response: IConfirmAppointmentResponse = {
     apiVersion: "1;2022-02-08",
     transactionId: "593f33f6-6122-4624-8c1c-6602a14a730e",
