@@ -22,8 +22,8 @@ type IAvailableTimeSlotsResponse = {
   };
 };
 
-const START_HOUR = 8; // 8 AM
-const LAST_HOUR = 18; // 6 PM
+const START_HOUR = 8 - 3; // 5 AM (considering UTC-3)
+const LAST_HOUR = 18 - 3; // 3 PM (considering UTC-3)
 const TIME_SPACE = 2; // hour
 
 function generateTimeSlots(startDate: string, endDate: string) {
@@ -31,10 +31,16 @@ function generateTimeSlots(startDate: string, endDate: string) {
   const end = new Date(endDate);
   const timeSlots = [];
 
+  const timeZoneOffset = start.getTimezoneOffset() / 60;
+
   for (let day = new Date(start); day <= end; day.setDate(day.getDate() + 1)) {
     for (
-      let hour = start.getHours() < START_HOUR ? START_HOUR : start.getHours();
-      hour < LAST_HOUR && hour + TIME_SPACE <= LAST_HOUR;
+      let hour =
+        start.getHours() < START_HOUR + timeZoneOffset
+          ? START_HOUR + timeZoneOffset
+          : start.getHours();
+      hour < LAST_HOUR + timeZoneOffset &&
+      hour + TIME_SPACE <= LAST_HOUR + timeZoneOffset;
       hour
     ) {
       const slotStart = new Date(day);
@@ -98,7 +104,6 @@ export async function GET(request: NextRequest) {
 function castToDate(value: string, defaultValue: Date): string {
   const _date = new Date(value);
   const date = isNaN(_date.getTime()) ? defaultValue : _date;
-
   return date.toString();
 }
 
