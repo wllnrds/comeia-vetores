@@ -57,15 +57,20 @@ function generateTimeSlots(startDate: string, endDate: string) {
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
-  const today = new Date().setHours(0, 0, 0, 0);
+  const today = new Date();
+  today.setHours(today.getHours(), 0, 0, 0);
+
+  const endOfToday = new Date();
+  endOfToday.setHours(23, 59, 59);
+
+  const _startDate = searchParams.get("startDate");
+  const _endDate = searchParams.get("endDate");
 
   const requestData: IAvailableTimeSlotsRequest = {
     addressId: searchParams.get("addressId") || "",
     workOrderId: searchParams.get("workOrderId") || "",
-    startDate: searchParams.get("startDate") || today.toString(),
-    endDate:
-      searchParams.get("endDate") ||
-      new Date(today + 23 * 60 * 60 * 1000).toString(),
+    startDate: castToDate(_startDate || "", today),
+    endDate: castToDate(_endDate || "", endOfToday),
     associatedDocumentDate: searchParams.get("associatedDocumentDate") || "",
     promiseDate: searchParams.get("promiseDate") || "",
     normativeIndicatorDate: searchParams.get("normativeIndicatorDate") || "",
@@ -87,6 +92,13 @@ export async function GET(request: NextRequest) {
     status: 200,
     headers: { "Content-Type": "application/json" },
   });
+}
+
+function castToDate(value: string, defaultValue: Date): string {
+  const _date = new Date(value);
+  const date = isNaN(_date.getTime()) ? defaultValue : _date;
+
+  return date.toString();
 }
 
 // api/mock/claro/vtal/gponappointments/timeslots?startDate=2025-10-17T00:00:59.817Z&endDate=2025-10-17T23:59:59.817Z
