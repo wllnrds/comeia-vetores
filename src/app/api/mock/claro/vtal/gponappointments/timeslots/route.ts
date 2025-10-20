@@ -22,37 +22,36 @@ type IAvailableTimeSlotsResponse = {
   };
 };
 
-const START_HOUR = 8 - 3; // 5 AM (considering UTC-3)
-const LAST_HOUR = 18 - 3; // 3 PM (considering UTC-3)
+const START_HOUR = 8; // 8 AM
+const LAST_HOUR = 18; // 6 PM
 const TIME_SPACE = 2; // hour
 
 function generateTimeSlots(startDate: string, endDate: string) {
-  const start = new Date(startDate);
-  const end = new Date(endDate);
+  const start = getDate(startDate);
+  const end = getDate(endDate);
   const timeSlots = [];
 
-  const timeZoneOffset = start.getTimezoneOffset() / 60;
-
-  for (let day = new Date(start); day <= end; day.setDate(day.getDate() + 1)) {
+  for (
+    let day = getDate(start.toString());
+    day <= end;
+    day.setDate(day.getDate() + 1)
+  ) {
     for (
-      let hour =
-        start.getHours() < START_HOUR + timeZoneOffset
-          ? START_HOUR + timeZoneOffset
-          : start.getHours();
-      hour < LAST_HOUR + timeZoneOffset &&
-      hour + TIME_SPACE <= LAST_HOUR + timeZoneOffset;
+      let hour = start.getHours() < START_HOUR ? START_HOUR : start.getHours();
+      hour < LAST_HOUR && hour + TIME_SPACE <= LAST_HOUR;
       hour
     ) {
-      const slotStart = new Date(day);
+      const slotStart = getDate(day.toString());
       slotStart.setHours(hour, 0, 0, 0);
 
-      const slotEnd = new Date(day);
+      const slotEnd = getDate(day.toString());
       slotEnd.setHours(hour + TIME_SPACE, 0, 0, 0);
 
       timeSlots.push({
         startDate: slotStart.toString(),
         endDate: slotEnd.toString(),
       });
+
       hour += TIME_SPACE;
     }
   }
@@ -64,10 +63,10 @@ function generateTimeSlots(startDate: string, endDate: string) {
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
-  const today = new Date();
+  const today = getDate();
   today.setHours(today.getHours() + 1, 0, 0, 0);
 
-  const endOfToday = new Date();
+  const endOfToday = getDate();
   endOfToday.setHours(23, 59, 59);
 
   const _startDate = searchParams.get("startDate");
@@ -102,9 +101,18 @@ export async function GET(request: NextRequest) {
 }
 
 function castToDate(value: string, defaultValue: Date): string {
-  const _date = new Date(value);
+  const _date = getDate(value);
   const date = isNaN(_date.getTime()) ? defaultValue : _date;
   return date.toString();
+}
+
+const LOCATION = "America/Sao_Paulo";
+
+// Retorna uma date com GMT -3
+function getDate(
+  date: string = new Date().toLocaleString("en-US", { timeZone: LOCATION })
+) {
+  return new Date(date);
 }
 
 // api/mock/claro/vtal/gponappointments/timeslots?startDate=2025-10-17T00:00:59.817Z&endDate=2025-10-17T23:59:59.817Z
