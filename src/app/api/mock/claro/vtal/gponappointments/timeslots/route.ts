@@ -39,6 +39,7 @@ function generateTimeSlots(startDate: string, endDate: string) {
     ) {
       const slotStart = new Date(day);
       slotStart.setHours(hour, 0, 0, 0);
+
       const slotEnd = new Date(day);
       slotEnd.setHours(hour + TIME_SPACE, 0, 0, 0);
 
@@ -58,7 +59,7 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
   const today = new Date();
-  today.setHours(today.getHours(), 0, 0, 0);
+  today.setHours(today.getHours() + 1, 0, 0, 0);
 
   const endOfToday = new Date();
   endOfToday.setHours(23, 59, 59);
