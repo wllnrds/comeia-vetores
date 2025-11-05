@@ -10,6 +10,7 @@ type IGroup = {
     title: string;
     href: string;
     cover?: string;
+    description?: string;
   }[];
 };
 
@@ -29,6 +30,11 @@ const data: IGroup[] = [
       {
         title: "Ofertas renegociação",
         href: "/api/mock/cobranca/oferta",
+      },
+      {
+        title: "Status pedido",
+        href: "/api/mock/pedido/status?id=ORD100001",
+        description: "use id=ORD100001, ORD100002, ORD100003",
       },
     ],
   },
@@ -80,6 +86,7 @@ export default function Home() {
                 title={item.title}
                 href={item.href}
                 cover={item?.cover}
+                description={item?.description}
               />
             ))}
           </MenuGroup>
@@ -119,30 +126,43 @@ function Item({
   title,
   href,
   cover,
+  description,
   className,
 }: {
   title: string;
   href: string;
+  description?: string;
   cover?: string;
   className?: string;
 }) {
   return (
     <div
-      className={`center bg-indigo-600 flex flex-col rounded-xl gap-2 w-full p-1 ${className}`}
+      className={`center bg-slate-100 flex flex-col rounded-xl w-full p-1 ${className}`}
     >
       {cover && (
-        <div className="w-full flex-none rounded-lg overflow-hidden relative">
-          <Image src={cover} alt={title} width={256} height={256} />
+        <div className="w-full flex-none rounded-lg overflow-hidden relative aspect-video bg-black/65">
+          <Image
+            src={cover}
+            alt={title}
+            fill
+            className="object-contain object-center"
+          />
         </div>
       )}
 
       <Link
         target="_blank"
         href={href}
-        className={`text-white flex-1 flex flex-row rounded-lg hover:bg-indigo-700 pointer`}
+        className={`text-black/65 flex-1 flex flex-row rounded-lg hover:bg-slate-300 pointer`}
       >
-        <span className={"p-3"}>{title}</span>
+        <span className="p-3">{title}</span>
       </Link>
+
+      {description && (
+        <p className="px-3 py-2">
+          <small className="text-black/30">{description}</small>
+        </p>
+      )}
     </div>
   );
 }
