@@ -1,3 +1,4 @@
+import { sendCampaignEvent } from "@/lib/colmeia";
 import { NextRequest } from "next/server";
 
 type IScheduleAppointmentRequest = {
@@ -32,6 +33,20 @@ export async function POST(request: NextRequest) {
       workOrderId: 146755584504157,
     },
   };
+
+  const confirmEvent = await request.json();
+
+  const { action } = confirmEvent;
+
+  if (action) {
+    const data: ICampaignEventBody = action as ICampaignEventBody;
+
+    try {
+      await sendCampaignEvent(data);
+    } catch (error) {
+      console.error("Error sending campaign event:", error);
+    }
+  }
 
   return new Response(JSON.stringify(response), {
     status: 200,
