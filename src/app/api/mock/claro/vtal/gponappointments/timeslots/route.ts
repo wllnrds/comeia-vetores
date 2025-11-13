@@ -97,7 +97,10 @@ export async function GET(request: NextRequest) {
 function castToDate(value: string, defaultValue: Date): string {
   const _date = new Date(value);
   const date = isNaN(_date.getTime()) ? defaultValue : _date;
+
+  const today = new Date();
+  if (date < today) {
+    return defaultValue.toUTCString();
+  }
   return date.toUTCString();
 }
-
-// api/mock/claro/vtal/gponappointments/timeslots?startDate=2025-10-17T00:00:59.817Z&endDate=2025-10-17T23:59:59.817Z
