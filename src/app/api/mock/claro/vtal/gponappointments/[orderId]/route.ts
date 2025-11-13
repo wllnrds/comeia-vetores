@@ -61,19 +61,19 @@ export async function GET(
   dateEnd.setHours(dateStart.getHours() + 2, 0, 0, 0);
 
   const response: any = {
+    apiVersion: "1;2022-02-08",
     transactionId: "593f33f6-6122-4624-8c1c-6602a14a730e",
-    data: {
-      associatedDocument: "12345678900",
-      associatedDocumentDate: new Date().toString(),
-      serviceType: 1,
-      startDate: dateStart.toString(),
-      endDate: dateEnd.toString(),
-      normativeIndicatorDate: new Date().toString(),
-      promiseDate: new Date().toString(),
-      note: "Agendado instação",
-      reason: "",
-      addressId: 1,
-    },
+    workOrderId: orderId,
+    workOrderStatus: "Não atribuído",
+    appointments: [
+      {
+        associatedDocumentDate: new Date().toString(),
+        startDate: dateStart.toString(),
+        endDate: dateEnd.toString(),
+        reason: "",
+        reasonDetail: "Agendado instação",
+      },
+    ],
   };
 
   return new Response(JSON.stringify(response), {
