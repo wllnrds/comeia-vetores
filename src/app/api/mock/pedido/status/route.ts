@@ -45,11 +45,17 @@ const customer = {
   phone: "+55 11 91234-5678",
 };
 
+function getDatePlus(days: number): string {
+  const date = new Date();
+  date.setDate(date.getDate() + days);
+  return date.toISOString().split("T")[0];
+}
+
 const orders = [
   {
     orderId: "ORD100001",
     status: "Processing",
-    estimatedDelivery: "2025-11-15",
+    estimatedDelivery: getDatePlus(14),
     deliveryAddress: {
       ...customer.address,
     },
@@ -66,7 +72,7 @@ const orders = [
   {
     orderId: "ORD100002",
     status: "Delivered",
-    estimatedDelivery: "2025-10-20",
+    estimatedDelivery: getDatePlus(-5),
     deliveryAddress: {
       ...customer.address,
     },
@@ -82,8 +88,8 @@ const orders = [
   },
   {
     orderId: "ORD100003",
-    status: "Processing",
-    estimatedDelivery: "2025-12-05",
+    status: "Shipped",
+    estimatedDelivery: getDatePlus(0),
     deliveryAddress: {
       ...customer.address,
     },
@@ -98,3 +104,27 @@ const orders = [
     ],
   },
 ];
+
+// print data as "segunda-feira, 01 de janeiro de 2024"
+function dateToStamp(dateStr: string): string {
+  const date = new Date(dateStr);
+
+  return date.toLocaleDateString("pt-BR", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+function writeAddress(address: any): string {
+  return `${address.street}, ${address.number}${
+    address.complement ? ", " + address.complement : ""
+  } - ${address.neighborhood}, ${address.city} - ${address.state}, ${address.zipCode}`;
+}
+
+const STATUS: Record<string, string> = {
+  Processing: "Processando",
+  Delivered: "Entregue",
+  Shipped: "Em rota de entrega",
+};
