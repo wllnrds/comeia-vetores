@@ -1,4 +1,4 @@
-import { error } from "console";
+"use server";
 
 const BASE_URL: string = "https://api.colmeia.me/v1/rest";
 
