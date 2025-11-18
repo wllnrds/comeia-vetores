@@ -45,30 +45,66 @@ export default function Page() {
   }
 
   function handleActionConfirmarAgendamento() {
+    const dateStamp = new Date(data.data).toLocaleDateString("pt-BR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
     send({
       idCampaignAction: "H4BZa7CsDlEjBwVoCIeMrgshz8vk5K",
-      contactList: [data],
+      contactList: [{ ...data, data: dateStamp }],
     });
   }
 
   function handleActionAntecipação() {
+    const dateStamp = new Date(data.data).toLocaleDateString("pt-BR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
     send({
       idCampaignAction: "Zp7AvR5iif588tsDu7gPCvVyTr3zWc",
-      contactList: [data],
+      contactList: [{ ...data, data: dateStamp }],
     });
   }
 
   function handleActionConfirmar() {
+    const dateStamp = new Date(data.data).toLocaleDateString("pt-BR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
     send({
       idCampaignAction: "ZCF9gMYV7qIrKLn2f7QX0cHidPYgpP",
-      contactList: [data],
+      contactList: [{ ...data, data: dateStamp }],
     });
   }
 
   function handleActionAvaliar() {
+    const dateStamp = new Date(data.data).toLocaleDateString("pt-BR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
     send({
       idCampaignAction: "MdyDa3M0ou0zmMA3qVKfmeqDMyiS2x",
-      contactList: [data],
+      contactList: [{ ...data, data: dateStamp }],
     });
   }
 
