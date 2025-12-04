@@ -120,7 +120,9 @@ function dateToStamp(dateStr: string): string {
 function writeAddress(address: any): string {
   return `${address.street}, ${address.number}${
     address.complement ? ", " + address.complement : ""
-  } - ${address.neighborhood}, ${address.city} - ${address.state}, ${address.zipCode}`;
+  } - ${address.neighborhood}, ${address.city} - ${address.state}, ${
+    address.zipCode
+  }`;
 }
 
 const STATUS: Record<string, string> = {
