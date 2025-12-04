@@ -32,7 +32,7 @@ async function generateToken(): Promise<string> {
 
 export async function sendCampaignEvent(body: ICampaignEventBody) {
   const token = await generateToken();
-  await fetch(`${BASE_URL}/marketing-send-campaign`, {
+  const result = await fetch(`${BASE_URL}/marketing-send-campaign`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -43,12 +43,16 @@ export async function sendCampaignEvent(body: ICampaignEventBody) {
   })
     .then((response) => {
       if (!response.ok) {
+        console.error("Error in sendCampaignEvent:", response);
         throw new Error(`Error sending campaign event: ${response.statusText}`);
       } else {
-        console.log("Campaign event sent successfully");
+        return response;
       }
     })
     .catch((error) => {
-      console.error("Error sending campaign event:", error);
+      console.error("Error in sendCampaignEvent:", error);
+      throw error;
     });
+
+  return result;
 }
