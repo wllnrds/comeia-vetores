@@ -46,8 +46,11 @@ export async function sendCampaignEvent(body: ICampaignEventBody) {
         console.error("Error in sendCampaignEvent:", response);
         throw new Error(`Error sending campaign event: ${response.statusText}`);
       } else {
-        return response;
+        return response.json();
       }
+    })
+    .then((result) => {
+      return result;
     })
     .catch((error) => {
       console.error("Error in sendCampaignEvent:", error);

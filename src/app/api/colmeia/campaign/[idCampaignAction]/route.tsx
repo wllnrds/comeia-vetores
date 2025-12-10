@@ -10,7 +10,10 @@ export async function POST(
 
     const requestBody: ICampaignEventBody = {
       idCampaignAction,
-      contactList: body?.leads && Array.isArray(body.leads) ? body.leads : [],
+      contactList:
+        body?.leads && Array.isArray(body.leads)
+          ? body.leads.map(mapLeadToRdFormat)
+          : [],
     };
 
     if (
@@ -54,4 +57,32 @@ export async function POST(
       }
     );
   }
+}
+
+const RD_FIELDS = [
+  "id",
+  "name",
+  "email",
+  "company",
+  "job_title",
+  "personal_phone",
+  "mobile_phone",
+  "interest",
+  "tags",
+  "number_conversions",
+  "opportunity",
+  "lead_stage",
+  "fit_score",
+  "last_marked_opportunity_date",
+  "mobile_phone",
+];
+
+function mapLeadToRdFormat(lead: any) {
+  const mappedLead: any = {};
+  RD_FIELDS.forEach((field) => {
+    if (lead[field] !== undefined) {
+      mappedLead[field] = lead[field] ? `${lead[field]}` : "-";
+    }
+  });
+  return mappedLead;
 }
