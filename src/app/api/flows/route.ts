@@ -55,7 +55,7 @@ export async function POST(request: Request) {
       },
     };
 
-    return new Response(atob(JSON.stringify(SCREEN_RESPONSES.SUCCESS)), {
+    return new Response(btoa(JSON.stringify(SCREEN_RESPONSES.SUCCESS)), {
       status: 200,
     });
   } catch (error) {
