@@ -1,6 +1,10 @@
 export async function POST(request: Request) {
   try {
-    const body = await request.text();
+    const body: {
+      encrypted_flow_data: string;
+      encrypted_aes_key: string;
+      initial_vector: string;
+    } = await request.json();
 
     console.log("Received flow data:", body);
 
@@ -51,7 +55,7 @@ export async function POST(request: Request) {
       },
     };
 
-    return new Response(JSON.stringify(SCREEN_RESPONSES.SUCCESS), {
+    return new Response(atob(JSON.stringify(SCREEN_RESPONSES.SUCCESS)), {
       status: 200,
     });
   } catch (error) {
