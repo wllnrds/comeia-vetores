@@ -1,0 +1,445 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Apiário",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/api/mock/claro/vtal/gponappointments/timeslots": {
+      "get": {
+        "summary": "1. Consultar timeslots",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "2025-11-15T00:00:00.000Z",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/api/mock/claro/vtal/gponappointments": {
+      "post": {
+        "summary": "2. Criar agendamento",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "transactionId": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "associatedDocument": {
+                        "type": "string"
+                      },
+                      "associatedDocumentDate": {
+                        "type": "string"
+                      },
+                      "serviceType": {
+                        "type": "integer"
+                      },
+                      "startDate": {
+                        "type": "string"
+                      },
+                      "endDate": {
+                        "type": "string"
+                      },
+                      "normativeIndicatorDate": {
+                        "type": "string"
+                      },
+                      "promiseDate": {
+                        "type": "string"
+                      },
+                      "note": {
+                        "type": "string"
+                      },
+                      "reason": {
+                        "type": "string"
+                      },
+                      "addressId": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "associatedDocument",
+                      "associatedDocumentDate",
+                      "serviceType",
+                      "startDate",
+                      "endDate",
+                      "normativeIndicatorDate",
+                      "promiseDate",
+                      "note",
+                      "reason",
+                      "addressId"
+                    ]
+                  },
+                  "action": {
+                    "type": "object",
+                    "properties": {
+                      "idCampaignAction": {
+                        "type": "string"
+                      },
+                      "contactList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "nome": {
+                              "type": "string"
+                            },
+                            "data": {
+                              "type": "string"
+                            },
+                            "endereco": {
+                              "type": "string"
+                            },
+                            "celular": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "required": [
+                      "idCampaignAction",
+                      "contactList"
+                    ]
+                  }
+                },
+                "required": [
+                  "transactionId",
+                  "data",
+                  "action"
+                ]
+              },
+              "example": {
+                "transactionId": "593f33f6-6122-4624-8c1c-6602a14a730e",
+                "data": {
+                  "associatedDocument": "12345678900",
+                  "associatedDocumentDate": "Mon Oct 20 2025 17:48:59 GMT+0000 (Horário Universal Coordenado)",
+                  "serviceType": 1,
+                  "startDate": "Mon Oct 27 2025 15:00:00 GMT+0000 (Horário Universal Coordenado)",
+                  "endDate": "Mon Oct 27 2025 17:00:00 GMT+0000 (Horário Universal Coordenado)",
+                  "normativeIndicatorDate": "Mon Oct 20 2025 17:48:59 GMT+0000 (Horário Universal Coordenado)",
+                  "promiseDate": "Mon Oct 20 2025 17:48:59 GMT+0000 (Horário Universal Coordenado)",
+                  "note": "Agendado instação",
+                  "reason": "",
+                  "addressId": 1
+                },
+                "action": {
+                  "idCampaignAction": "H4BZa7CsDlEjBwVoCIeMrgshz8vk5K",
+                  "contactList": [
+                    {
+                      "nome": "Willian Rodrigues",
+                      "data": "quinta-feira, 14 de novembro às 11:00",
+                      "endereco": "Rua Marfim 135, APT 42-A",
+                      "celular": "5511990119349"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/api/mock/claro/vtal/gponappointments/{workOrderId}": {
+      "get": {
+        "summary": "3. Consultar agendamento",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "workOrderId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "1234",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "4. Alterar agendamento",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "workOrderId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "transactionId": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "associatedDocument": {
+                        "type": "string"
+                      },
+                      "associatedDocumentDate": {
+                        "type": "string"
+                      },
+                      "serviceType": {
+                        "type": "integer"
+                      },
+                      "startDate": {
+                        "type": "string"
+                      },
+                      "endDate": {
+                        "type": "string"
+                      },
+                      "normativeIndicatorDate": {
+                        "type": "string"
+                      },
+                      "promiseDate": {
+                        "type": "string"
+                      },
+                      "note": {
+                        "type": "string"
+                      },
+                      "reason": {
+                        "type": "string"
+                      },
+                      "addressId": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "associatedDocument",
+                      "associatedDocumentDate",
+                      "serviceType",
+                      "startDate",
+                      "endDate",
+                      "normativeIndicatorDate",
+                      "promiseDate",
+                      "note",
+                      "reason",
+                      "addressId"
+                    ]
+                  }
+                },
+                "required": [
+                  "transactionId",
+                  "data"
+                ]
+              },
+              "example": {
+                "transactionId": "593f33f6-6122-4624-8c1c-6602a14a730e",
+                "data": {
+                  "associatedDocument": "12345678900",
+                  "associatedDocumentDate": "Mon Oct 20 2025 17:48:59 GMT+0000 (Horário Universal Coordenado)",
+                  "serviceType": 1,
+                  "startDate": "Mon Oct 27 2025 15:00:00 GMT+0000 (Horário Universal Coordenado)",
+                  "endDate": "Mon Oct 27 2025 17:00:00 GMT+0000 (Horário Universal Coordenado)",
+                  "normativeIndicatorDate": "Mon Oct 20 2025 17:48:59 GMT+0000 (Horário Universal Coordenado)",
+                  "promiseDate": "Mon Oct 20 2025 17:48:59 GMT+0000 (Horário Universal Coordenado)",
+                  "note": "Agendado instação",
+                  "reason": "",
+                  "addressId": 1
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/api/mock/claro/vtal/gponappointments/confirmation": {
+      "post": {
+        "summary": "5. Confirmação de agendamento",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "transactionId": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "subscriberId": {
+                        "type": "string"
+                      },
+                      "appointmentConfirmation": {
+                        "type": "boolean"
+                      },
+                      "workOrderId": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "subscriberId",
+                      "appointmentConfirmation",
+                      "workOrderId"
+                    ]
+                  }
+                },
+                "required": [
+                  "transactionId",
+                  "data"
+                ]
+              },
+              "example": {
+                "transactionId": "593f33f6-6122-4624-8c1c-6602a14a730e",
+                "data": {
+                  "subscriberId": "1234",
+                  "appointmentConfirmation": true,
+                  "workOrderId": 12345678900
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    }
+  },
+  "webhooks": {},
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "securitySchemes": {
+      "basic": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "servers": [],
+  "security": []
+}
