@@ -1,0 +1,26 @@
+export async function GET(req: Request) {
+  const data: String[] = [
+    `O que é um Seguro de Vida? O Seguro de Vida é um contrato no qual a Seguros de Vida ColmeIA se compromete a pagar uma indenização financeira (chamada de capital segurado) aos beneficiários indicados por você, em caso de seu falecimento durante a vigência da apólice.`,
+    `Por que eu deveria contratar um Seguro de Vida? O Seguro de Vida oferece proteção e tranquilidade financeira para as pessoas que você ama. Ele garante que, na sua ausência, seus beneficiários terão o suporte necessário para se reestruturarem, quitarem dívidas ou manterem o padrão de vida.`,
+    `Quem pode ser meu beneficiário? Você tem total liberdade para escolher quem serão seus beneficiários. Pode ser seu cônjuge, filhos, pais, irmãos ou até mesmo amigos. Não é necessário ter vínculo familiar.`,
+    `Posso alterar os beneficiários da minha apólice? Sim. Você pode alterar seus beneficiários a qualquer momento e quantas vezes desejar, enquanto sua apólice estiver ativa. A alteração é simples e deve ser formalizada junto à ColmeIA.`,
+    `O que a apólice de Seguro de Vida da ColmeIA cobre? Nossas apólices cobrem o falecimento do segurado por causas naturais ou acidentais. Dependendo do plano contratado, podem existir coberturas adicionais. É importante consultar as condições gerais do seu contrato.`,
+    `Qual a diferença entre morte natural e morte acidental? Morte natural é aquela decorrente de uma doença ou disfunção do organismo. Já a morte acidental é consequência de um evento externo, súbito, involuntário e violento, como um acidente de trânsito. Verifique em sua apólice se há distinção na cobertura.`,
+    `O Seguro de Vida cobre suicídio? Sim, a legislação atual prevê a cobertura para suicídio. Contudo, existe um período de carência a ser cumprido após a contratação do seguro. A indenização é paga se o evento ocorrer após o término desse prazo.`,
+    `Como o valor da indenização (capital segurado) é definido? O valor do capital segurado é uma escolha sua no momento da contratação. Ele deve ser baseado nas necessidades financeiras de seus dependentes, no seu planejamento de vida e no quanto você deseja deixar como proteção.`,
+    `Preciso fazer exames médicos para contratar o seguro? Para a maioria dos planos e valores, a contratação é simplificada e requer apenas o preenchimento da Declaração Pessoal de Saúde. Dependendo da idade e do capital segurado, a ColmeIA pode solicitar exames adicionais.`,
+    `E se eu tiver uma doença preexistente? É fundamental que todas as condições de saúde sejam informadas na Declaração Pessoal de Saúde. A omissão de informações pode resultar na negativa do pagamento da indenização. A ColmeIA analisará cada caso individualmente.`,
+    `Por quanto tempo minha apólice é válida? A validade da sua apólice, chamada de vigência, está descrita no seu contrato. Nossos planos geralmente possuem renovação periódica, desde que os pagamentos estejam em dia.`,
+    `O que acontece se eu parar de pagar o seguro? A falta de pagamento do prêmio (a mensalidade do seguro) pode levar à suspensão da cobertura e, posteriormente, ao cancelamento da apólice, resultando na perda do direito à indenização.`,
+    `Posso cancelar meu Seguro de Vida a qualquer momento? Sim, o seguro pode ser cancelado por você a qualquer momento. Basta entrar em contato com os canais de atendimento da Seguros de Vida ColmeIA para solicitar o cancelamento.`,
+    `Como meus beneficiários fazem para receber a indenização? Em caso de falecimento, um dos beneficiários ou um representante deve comunicar o sinistro à ColmeIA, apresentando a documentação solicitada para que o processo de análise e pagamento seja iniciado.`,
+    `Quais documentos são geralmente necessários para solicitar a indenização? Normalmente, são necessários a certidão de óbito, documentos de identificação do segurado e dos beneficiários, e o formulário de aviso de sinistro. Documentos adicionais podem ser solicitados conforme a causa do falecimento.`,
+    `A indenização do Seguro de Vida tem desconto de Imposto de Renda? Não. Por lei, o capital segurado recebido pelos beneficiários é isento de Imposto de Renda e não precisa ser declarado como rendimento tributável.`,
+    `O valor da indenização entra em inventário? Não. O Seguro de Vida não é considerado herança e, por isso, não faz parte do inventário. O pagamento é feito diretamente aos beneficiários indicados, de forma ágil e sem burocracia.`,
+    `A partir de qual idade posso contratar um Seguro de Vida? A idade mínima e máxima para contratação pode variar de acordo com o plano escolhido. Geralmente, é possível contratar nossos seguros a partir da maioridade legal.`,
+    `O valor que eu pago mensalmente pode mudar com o tempo? Sim. O valor do prêmio pode ser reajustado periodicamente, conforme previsto em contrato, principalmente em função da mudança de faixa etária e da atualização monetária do capital segurado por um índice de inflação.`,
+    `Quem é a Seguros de Vida ColmeIA? A Seguros de Vida ColmeIA é uma seguradora especialista em proteção familiar. Nosso único foco é oferecer produtos de Seguro de Vida, garantindo que você e sua família tenham a segurança e o amparo necessários para todos os momentos.`,
+  ];
+
+  return new Response(data.join("\n ### \n"));
+}
