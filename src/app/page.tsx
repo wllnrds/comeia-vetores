@@ -21,7 +21,10 @@ const data: IGroup[] = [
       {
         title: "Guia consórcio",
         href: "/vetores/consorcio",
-      },
+      },{
+        title: "Guia seguro de vida",
+        href: "/vetores/seguro",
+      }
     ],
   },
   {
