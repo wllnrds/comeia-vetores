@@ -35,6 +35,10 @@ const data: IGroup[] = [
         href: "/api/mock/cobranca/oferta",
       },
       {
+        title: "Ofertas emprestimo",
+        href: "/api/mock/emprestimo/oferta",
+      },
+      {
         title: "Status pedido",
         href: "/api/mock/pedido/status?id=ORD100001",
         description: "use id=ORD100001, ORD100002, ORD100003",
