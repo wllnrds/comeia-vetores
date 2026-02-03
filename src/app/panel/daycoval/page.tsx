@@ -10,9 +10,9 @@ async function sendCampaign(data: ICampaignEventBody) {
 
 export default function Page() {
   const [data, setData] = useState({
-    nome: "Willian Rodrigues",
+    nome: "",
     cpf: "01234567890",
-    celular: "5511990119349",
+    celular: "",
   });
 
   const [template,setTemplate] = useState<string>("");

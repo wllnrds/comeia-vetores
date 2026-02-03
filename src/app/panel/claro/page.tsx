@@ -10,10 +10,10 @@ async function sendCampaign(data: ICampaignEventBody) {
 
 export default function Page() {
   const [data, setData] = useState({
-    nome: "Willian Rodrigues",
+    nome: "",
     data: "2025-11-20T16:00",
-    endereco: "R. Marfim 135, APT 42-A",
-    celular: "5511990119349",
+    endereco: "",
+    celular: "",
   });
 
   function send(data: ICampaignEventBody) {
