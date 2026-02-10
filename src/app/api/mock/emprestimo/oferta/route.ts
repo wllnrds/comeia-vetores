@@ -6,7 +6,7 @@ export async function GET() {
       id: "cust_102938",
       profile: "PF",
       bankinfo: {
-        bankName: "Banco Daycoval",
+        bankName: "707 - Banco Daycoval S.A.",
         accountType: "Conta Corrente",
         accountNumber: "12345-6",
         agencyNumber: "0001",
