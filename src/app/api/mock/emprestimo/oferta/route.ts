@@ -5,20 +5,12 @@ export async function GET() {
     customer: {
       id: "cust_102938",
       profile: "PF",
-      bankinfo:[
-        {
-          bankName: "Banco Daycoval",
-          accountType: "Conta Corrente",
-          accountNumber: "12345-6",
-          agencyNumber: "0001",
-        },
-        {
-          bankName: "Banco Daycoval",
-          accountType: "Conta Poupança",
-          accountNumber: "54321-0",
-          agencyNumber: "0001",
-        }
-      ]
+      bankinfo: {
+        bankName: "Banco Daycoval",
+        accountType: "Conta Corrente",
+        accountNumber: "12345-6",
+        agencyNumber: "0001",
+      },
     },
     loan: {
       amountRequested: 15000.0,
