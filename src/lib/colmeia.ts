@@ -1,4 +1,4 @@
-"use server";
+'use server';
 
 const BASE_URL: string = "https://api.colmeia.me/v1/rest";
 
@@ -16,13 +16,14 @@ async function generateToken(): Promise<string> {
     },
     body: JSON.stringify({
       idTokenToRefresh: idTokenToRefresh,
-      idSocialNetwork: idSocialNetwork,
       email: email,
       password: password,
+      idSocialNetwork: `${idSocialNetwork}`,
     }),
   });
 
   if (!response.ok) {
+    console.error("Error generating token:", await response.json());
     throw new Error(`Error generating token: ${response.statusText}`);
   }
 

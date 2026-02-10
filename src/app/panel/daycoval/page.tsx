@@ -1,6 +1,7 @@
 "use client";
 
 import { sendCampaignEvent } from "@/lib/colmeia";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -9,13 +10,24 @@ async function sendCampaign(data: ICampaignEventBody) {
 }
 
 export default function Page() {
+  const seatchParams = useSearchParams();
+
+  const proposta = {
+    nome: seatchParams.get("nome") || undefined,
+    cpf: seatchParams.get("cpf") || undefined,
+    celular: seatchParams.get("celular") || undefined,
+  };
+
+  const [proposalSended, setProposalSended] = useState(false);
+
   const [data, setData] = useState({
-    nome: "",
+    nome: "Will",
     cpf: "01234567890",
-    celular: "",
+    celular: "5511990119349",
   });
 
-  const [template,setTemplate] = useState<string>("");
+  const [template, setTemplate] = useState<string>("");
+  const [mktRuler, setMktRuler] = useState<string>("");
 
   function send(data: ICampaignEventBody) {
     sendCampaign(data)
@@ -50,13 +62,15 @@ export default function Page() {
   function handleActionDefault() {
     send({
       idCampaignAction: "DkB5xLCiCQTMf5KxDVejaUqnDCybQq",
-      contactList: [ data ],
+      contactList: [data],
     });
   }
 
   function handleAction() {
-    if( !template ) {
-        toast.error(`Você precisa colocar um ID de ação de campanha para fazer um disparo customizado`, {
+    if (!template && !mktRuler) {
+      toast.error(
+        `Você precisa colocar um ID de ação de campanha ou um ID de régua de marketing para fazer um disparo customizado`,
+        {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -65,15 +79,70 @@ export default function Page() {
           draggable: true,
           progress: undefined,
           theme: "colored",
-        });
+        },
+      );
 
-        return;
+      return;
     }
 
     send({
-      idCampaignAction: template,
-      contactList: [ data ],
+      idCampaignAction: template || undefined,
+      idMktRuler: mktRuler || undefined,
+      contactList: [data],
     });
+  }
+
+  function handleActionProposta() {
+    send({
+      idMktRuler: "ijBmkmQ1Oke74JjPipdvoS3ntpwEhyIh",
+      contactList: [{
+        nome: proposta.nome!,
+        cpf: proposta.cpf!,
+        celular: proposta.celular!,
+      }],
+    })
+    setProposalSended(true);
+  }
+
+  if (proposta.nome && proposta.cpf && proposta.celular) {
+    if(proposalSended) {
+
+    return (
+      <div className="h-dvh flex items-center justify-center text-gray-900">
+        <section className="max-w-sm w-full p-4 bg-white flex flex-col rounded-2xl shadow-2xs">
+          <div className="p-4 flex flex-col gap-2">
+            <h1 className="text-xl text-blue-800 font-semibold text-center">
+              Proposta aceita com sucesso!
+            </h1>
+      </div>
+        </section>
+      </div>
+    );
+    }
+
+    return (
+      <div className="h-dvh flex items-center justify-center text-gray-900">
+        <section className="max-w-sm w-full p-4 bg-white flex flex-col rounded-2xl shadow-2xs">
+          <div className="p-4 flex flex-col gap-2">
+            <h1 className="text-xl text-blue-800 font-semibold">
+              Aceite de Proposta
+            </h1>
+            <p className="font-light">
+              Simulação de aceite de proposta no nome de{" "}
+              <strong className="font-bold">{proposta.nome}</strong>, com cpf{" "}
+              <strong className="font-bold">{proposta.cpf}</strong>.
+            </p>
+          </div>
+
+          <Action
+            title="Confirmar aceite"
+            description="Simular o aceite da proposta web"
+            action={handleActionProposta}
+            color="lime"
+          />
+        </section>
+      </div>
+    );
   }
 
   return (
@@ -155,7 +224,9 @@ export default function Page() {
           color="sky"
         />
         <div className="mt-6 flex gap-4 flex-col px-4 pt-4 border rounded-xl border-gray-200 bg-white">
-        <h2 className="text-base/7 font-semibold text-gray-900">Disparo customizado</h2>
+          <h2 className="text-base/7 font-semibold text-gray-900">
+            Disparo customizado
+          </h2>
           <div className="w-full">
             <label
               htmlFor="nome"
@@ -175,13 +246,31 @@ export default function Page() {
               />
             </div>
           </div>
-        <Action
-          title="Disparar template"
-          description="Envia uma mensagem de oferta disponível."
-          action={handleAction}
-          color="lime"
-        />
-          
+          <div className="w-full">
+            <label
+              htmlFor="nome"
+              className="block text-sm/6 font-medium text-gray-900"
+            >
+              ID Régua de marketing (opcional)
+            </label>
+            <div className="mt-1">
+              <input
+                id="mktRuler"
+                type="text"
+                value={mktRuler || ""}
+                name="mktRuler"
+                autoComplete="mktRuler"
+                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                onChange={(e) => setMktRuler(e.target.value)}
+              />
+            </div>
+          </div>
+          <Action
+            title="Disparar template"
+            description="Envia uma mensagem de oferta disponível."
+            action={handleAction}
+            color="lime"
+          />
         </div>
       </div>
 
@@ -222,7 +311,7 @@ function Action({
 }) {
   return (
     <section
-      className={`p-4 rounded-xl mb-4 bg-gradient-to-r from-${color}-200 to-${color}-50 flex gap-8 justify-center items-center`}
+      className={`p-4 rounded-xl bg-gradient-to-r from-${color}-200 to-${color}-50 flex gap-8 justify-center items-center`}
     >
       <div className="flex-1">
         <h5 className="text-base font-bold">{title}</h5>

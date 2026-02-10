@@ -1,4 +1,5 @@
 type ICampaignEventBody = {
-  idCampaignAction: string;
+  idCampaignAction?: string;
+  idMktRuler?: string;
   contactList: Array<{ [key: string]: string }>;
 };
